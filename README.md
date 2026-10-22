@@ -31,14 +31,14 @@ Beide Befehle müssen eine Versionsnummer ausgeben. Falls `docker` nicht gefunde
 
 ### 2. Terminal im Kursordner öffnen
 
-Der aktuelle Ordner muss der Repository-Stamm `CAS-HAIC-Slides` sein. Dort befinden sich unter anderem `README.md`, `.devcontainer` und `exercises`.
+Der aktuelle Ordner muss der Repository-Stamm `embedding-visualization-exercise` sein. Dort befinden sich unter anderem `README.md`, `compose.yaml`, `Dockerfile` und `uebung_2_embeddings_pca.ipynb`.
 
-Windows: Im Datei-Explorer den Ordner `CAS-HAIC-Slides` öffnen, in die Adresszeile `powershell` schreiben und Enter drücken.
+Windows: Im Datei-Explorer den Ordner `embedding-visualization-exercise` öffnen, in die Adresszeile `powershell` schreiben und Enter drücken.
 
 macOS/Linux: Ein Terminal öffnen und mit `cd` in den Ordner wechseln, beispielsweise:
 
 ```bash
-cd ~/Downloads/CAS-HAIC-Slides
+cd ~/Downloads/embedding-visualization-exercise
 ```
 
 ### 3. Container bauen und JupyterLab starten
@@ -46,18 +46,12 @@ cd ~/Downloads/CAS-HAIC-Slides
 Unter Windows, macOS und Linux wird derselbe Befehl verwendet:
 
 ```text
-docker compose -f exercises/embedding_lab/compose.yaml up --build
+docker compose up --build
 ```
 
 Beim ersten Start lädt Docker das Python-Image und installiert die Abhängigkeiten. Das kann je nach Verbindung einige Minuten dauern. Spätere Starts verwenden den gebauten Container und sind deutlich schneller.
 
-Das Terminal bleibt während der Übung geöffnet. Der Container führt zuerst automatisch
-
-```text
-python exercises/embedding_lab/scripts/prepare_lab.py --reuse-cache
-```
-
-aus und startet danach JupyterLab. Die Meldung
+Das Terminal bleibt während der Übung geöffnet. Der Container verwendet die vorbereiteten Daten unter `data/processed/` und startet JupyterLab. Die Meldung
 
 ```text
 Jupyter Server ... is running at:
@@ -69,7 +63,7 @@ zeigt, dass das Labor bereit ist.
 
 Öffnet diese Adresse:
 
-<http://localhost:8888/lab/tree/exercises/embedding_lab/uebung_2_embeddings_pca.ipynb>
+<http://localhost:8888/lab/tree/uebung_2_embeddings_pca.ipynb>
 
 Es ist kein Token und kein Passwort nötig. Der Port ist nur auf dem eigenen Computer erreichbar.
 
@@ -92,7 +86,7 @@ Im Terminal, in dem Jupyter läuft:
 3. danach aus dem Repository-Stamm ausführen:
 
 ```text
-docker compose -f exercises/embedding_lab/compose.yaml down
+docker compose down
 ```
 
 Der Kursordner und gespeicherte Notebook-Änderungen bleiben erhalten. Beim nächsten Mal genügt derselbe Startbefehl aus Schritt 3.
@@ -109,23 +103,9 @@ Der Kursordner und gespeicherte Notebook-Änderungen bleiben erhalten. Beim näc
 
 **Eine Notebook-Zelle zeigt einen Fehler:** Zuerst **Kernel → Restart Kernel and Run All Cells** wählen. Bleibt der Fehler bestehen, Container mit `Ctrl+C` stoppen und den Startbefehl erneut ausführen.
 
-## Alternative: GitHub Codespaces
+## Vorbereitete Daten
 
-1. Repository in Codespaces öffnen.
-2. Als Dev-Container-Konfiguration **CAS HAIC – Embedding-Labor** wählen.
-3. `exercises/embedding_lab/uebung_2_embeddings_pca.ipynb` öffnen.
-4. Als Kernel **Python 3** wählen und **Run → Run All Cells** ausführen.
-
-## Nur für die Vorbereitung: Artefakte neu erzeugen
-
-Im Container:
-
-```bash
-python exercises/embedding_lab/scripts/prepare_lab.py
-python exercises/embedding_lab/scripts/make_notebook.py
-```
-
-Die Daten entstehen unter `data/processed/`, die HTML- und PNG-Ansichten unter `output/`.
+Die für das Notebook benötigten Daten liegen bereits unter `data/processed/`. Die Skripte zum Neuerzeugen der Artefakte und eine Dev-Container-Konfiguration für Codespaces sind in diesem Repository nicht enthalten.
 
 ## Didaktisch wichtige Grenze
 
