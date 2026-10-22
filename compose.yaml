@@ -1,0 +1,24 @@
+services:
+  embedding-lab:
+    container_name: cas-haic-embedding-lab
+    build:
+      context: ../..
+      dockerfile: .devcontainer/embedding-lab/Dockerfile
+    working_dir: /workspaces/CAS-HAIC-Slides
+    volumes:
+      - ../..:/workspaces/CAS-HAIC-Slides
+    ports:
+      - "127.0.0.1:8888:8888"
+    init: true
+    command:
+      - sh
+      - -lc
+      - >-
+        python exercises/embedding_lab/scripts/prepare_lab.py --reuse-cache &&
+        jupyter lab
+        --ip=0.0.0.0
+        --port=8888
+        --no-browser
+        --allow-root
+        --IdentityProvider.token=''
+        --ServerApp.root_dir=/workspaces/CAS-HAIC-Slides

@@ -1,0 +1,43 @@
+{
+  "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "model_registry_version": "fastembed==0.9.0",
+  "embedding_dimensions": 384,
+  "normalization": "L2",
+  "question": "Wie unterscheidet sich die Fairness-Initiative von 2026 von der Initiative «Für Ehe und Familie – gegen die Heiratsstrafe» von 2016?",
+  "example_answer": "Die Initiative von 2016 verband die Beseitigung steuerlicher Nachteile mit Sozialversicherungen, einer gemeinsamen Besteuerung und einer Definition der Ehe als Gemeinschaft von Mann und Frau. Die Fairness-Initiative von 2026 betrifft dagegen die gemeinsame Besteuerung bei der direkten Bundessteuer im Konflikt mit der bereits beschlossenen Individualbesteuerung. Sie enthält weder die damalige AHV-Regelung noch die damalige Definition der Ehe.",
+  "selected_pages": {
+    "H2016": [
+      5,
+      7,
+      8,
+      9,
+      11,
+      12
+    ],
+    "C2026": [
+      37,
+      38,
+      40,
+      41,
+      44,
+      46
+    ]
+  },
+  "source_sha256": {
+    "abstimmungsbuechlein_2016.pdf": "431f413c23bbf085f8e0c42f6a1dcb8129c49704995775bbd8b9bbcbde71b9be",
+    "abstimmungsbuechlein_2026.pdf": "391b1f2941820c9859b0fef5ac6dd366e325076ebd125f0c5ecd763fea428be2"
+  },
+  "passage_count": 50,
+  "chunk_count": 91,
+  "chunks_by_strategy": {
+    "abschnitt": 24,
+    "klein_65": 42,
+    "gross_150_o35": 25
+  },
+  "pca_explained_variance_ratio": [
+    0.22567474842071533,
+    0.135011687874794
+  ],
+  "retrieval_space": "vollständige normalisierte Embeddings; Kosinusähnlichkeit als Skalarprodukt",
+  "visualisation_space": "PCA mit zwei Komponenten auf der Vereinigung aller Chunk-, Frage- und Antwortvektoren"
+}
